@@ -12,6 +12,10 @@
 
 #include "ft_printf.h"
 
+/*
+** Handles format specifier conversion and argument processing
+** Determines which conversion function to call based on format character
+*/
 static size_t	ft_conversions(const char *str, va_list argc)
 {
 	size_t	len;
@@ -36,20 +40,26 @@ static size_t	ft_conversions(const char *str, va_list argc)
 	return (len);
 }
 
+/*
+** Main printf implementation
+** Parses format string character by character
+** Processes format specifiers when '%' is encountered
+** Returns total number of characters printed
+*/
 int	ft_printf(const char *ptr, ...)
 {
 	t_bytprt	p;
 
 	p.byte = 0;
-	va_start(p.argc, ptr);
+	va_start(p.argc, ptr);		/* Initialize variable arguments */
 	p.str = ptr;
 	while (*p.str != '\0')
 	{
 		if (*p.str == '%')
-			p.byte += ft_conversions(++p.str, p.argc);
+			p.byte += ft_conversions(++p.str, p.argc);	/* Handle format specifier */
 		else
 		{
-			write(1, p.str, 1);
+			write(1, p.str, 1);		/* Print regular character */
 			p.byte++;
 		}
 		p.str++;

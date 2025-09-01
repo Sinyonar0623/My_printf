@@ -1,0 +1,22 @@
+# Object files
+*.o
+
+# Static libraries
+*.a
+
+# Executables
+*.exe
+*.out
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test files
+test
+test_*
+main
